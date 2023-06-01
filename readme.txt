@@ -66,3 +66,16 @@ be sent to the user.
 In "app.py", the function names are largely irrelevant. What the user interacts with
 are the endpoints (@app.route("/"), etc). Function names only useful for out
 application itself, the user doesn't care about them.
+
+####################
+Jinja2, library that comes installed with Flask.
+Allows us to interpolate, to put stuff (other strings) into a text - these
+other strings are HTML strings.
+A template is any string of text that contains placeholders for the template
+language to be able to replace these placeholders with something else.
+The syntax used for the placeholders, and the whole syntax of the template
+as a whole, is known as a template language, and the underlying code that
+evaluates the template and puts the new values in is called a template
+engine.
+Flask comes with the powerful Jinja2 template language.
+Flask and Jinja2 were written by the same person.
