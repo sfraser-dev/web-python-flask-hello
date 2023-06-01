@@ -79,3 +79,14 @@ evaluates the template and puts the new values in is called a template
 engine.
 Flask comes with the powerful Jinja2 template language.
 Flask and Jinja2 were written by the same person.
+
+####################
+Final Forward Slashe in @app.route endpoints.
+Endpoint of: @app.route("/home/") is better to use than:
+@app.route("/home") because typing URL of
+https://www.example.com/home or https://www.example.com/home/
+will take you to the expected page. 
+
+Endpoint of: @app.route("/home") would result in only
+https://www.example.com/home working with 
+https://www.example.com/home/ failing.
