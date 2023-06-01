@@ -49,3 +49,20 @@ be writing our code.
 
 (6) Now we can run flask
     flask run
+
+####################
+Content that is static doesn't have to be generated, modified or processed.
+The server just delivers the file to the user and the user uses it, it doesn't
+have to go through any processing by the user.
+
+In flask, HTML files go into a folder called "templates/" and this folder should
+be in the same directory as the "app.py" file. The directory should be the the
+top dir of the project - this is what Flask expects and looks for. For example,
+"first_page.html" and  "second_page.html" can go in "templates/".
+
+Also need to import "render_template" in app.py as this allows naming a file to
+be sent to the user.
+
+In "app.py", the function names are largely irrelevant. What the user interacts with
+are the endpoints (@app.route("/"), etc). Function names only useful for out
+application itself, the user doesn't care about them.
