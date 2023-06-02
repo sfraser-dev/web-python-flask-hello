@@ -102,3 +102,29 @@ Interpolate: "to insert between other elements or parts"
 ####################
 Teclado website 18k hits per month, most ever simultaneous POSTS is 5
 
+
+####################
+MongoDB
+MongoDB originally designed for large amounts of small pieces data
+**MongoDB Cloud Atlas (DB in the cloud, DBaaS, DB as a Service)
+**MongoDB Compass (local GUI for managing our DBs in the cloud)
+MongoDB Collections of Documents (CD)
+
+No schema needed in mDB so easy to store a lot of info without
+lots of design considerations (unlike schema based SQL) but
+this also means you cannot do joins to see relationships between
+tables / do multiple checks like SQL cam
+SQL creates relations between tables via PKs and FKs
+
+{JSON} = 1 document
+[{JSON1}, {JSON2}] = multiple documents (list of documents)
+
+A mDB document is "like" a row in a SQL table. A collection
+of documents is "like" a SQL table
+
+** pip install pymongo[srv] # in pyenv 3.9.0  
+# srv part need to connect to cloud atlas
+
+pip freeze # see everything you've installed with pip
+mongodb+srv://mong-rabbit:<password>@jack-rabbit.u44ibnh.mongodb.net/
+Replace all of <password> with the password (remove < > too)
