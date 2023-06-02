@@ -70,3 +70,8 @@ kwargs_data_structures = {
 def hello_world_data_structures():
     return render_template(
         "data_structures.html", **kwargs_data_structures)
+
+company = "Microsoft"     # "Apple" or "Microsoft"
+@app.route("/conditionals_if/")
+def hello_world_conditionals_if():
+    return render_template("conditionals_if.html", company="Apple")

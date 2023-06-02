@@ -90,3 +90,11 @@ will take you to the expected page.
 Endpoint of: @app.route("/home") would result in only
 https://www.example.com/home working with 
 https://www.example.com/home/ failing.
+
+####################
+Jinja2
+Interpolate: "to insert between other elements or parts" 
+{{ }}   expressions, these will get reduced to a single value and
+        get interpolated into the template
+{% %}   statements, allow Jinja2 tp make decisions or do something
+        other than interpolating values (if, for)
