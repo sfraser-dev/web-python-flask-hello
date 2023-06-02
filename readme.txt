@@ -25,7 +25,7 @@ be writing our code.
     pyenv local 3.9.0
     pyenv local
     # create a virtual environment (intellisence can now work)
-    pyenv exec python -m venv .venv
+    pyenv exec python -m venv .venv (add .venv to gitignore)
     # activate the virtual environment
     .\.venv\Scripts\activate
 
