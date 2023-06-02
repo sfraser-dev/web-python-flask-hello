@@ -98,3 +98,7 @@ Interpolate: "to insert between other elements or parts"
         get interpolated into the template
 {% %}   statements, allow Jinja2 tp make decisions or do something
         other than interpolating values (if, for)
+
+####################
+Teclado website 18k hits per month, most ever simultaneous POSTS is 5
+
