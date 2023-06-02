@@ -10,10 +10,7 @@
     <h1>Hello {{ name }}</h1>
     <p>Introduction to the {{ template_name }} language.</p>
     <p>{{ template_name }} results in non-static content.</p>
-    <a href="/">first page</a>
-    <a href="/second/">second page</a>
-    <a href="/jinja2/">jinja2 page</a>
-    <a href="/expressions/">expressions page</a>
-    <a href="/data_structures/">data_structures page</a>
+
+    {% include "nav.html" %}
 </body>
 </html>
