@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For loop</title>
+</head>
+<body>
+  <h1>For loop through list</h1>
+  <ul>
+    {% for i in planets_list %}
+      <li>{{ i }}</li>
+    {% endfor %}
+  </ul>
+
+  <h1>For loop through dictionary</h1>
+  <ul>
+    {% for key, value in planets_dict.items() %}
+      <li>{{ value }}</li>
+    {% endfor %}
+  </ul>
+
+  {% include "nav.html" %}
+</body>
+</html>

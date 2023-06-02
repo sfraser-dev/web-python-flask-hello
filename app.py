@@ -71,7 +71,23 @@ def hello_world_data_structures():
     return render_template(
         "data_structures.html", **kwargs_data_structures)
 
-company = "Microsoft"     # "Apple" or "Microsoft"
+company = "Apple"     # "Apple" or "Microsoft"
+# sixth endpoint
 @app.route("/conditionals_if/")
 def hello_world_conditionals_if():
-    return render_template("conditionals_if.html", company="Apple")
+    return render_template("conditionals_if.html", company = company)
+
+planets_list = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+planets_dict = {1:"Mercury", 2:"Venus", 3:"Earth", 4:"Mars", 5:"Jupiter", 6:"Saturn", 7:"Uranus", 8:"Neptune"}
+# seventh endpoint
+@app.route("/for_loop/")
+def hello_world_for_loop():
+    return render_template("for_loop.html",
+                           planets_list = planets_list,
+                           planets_dict = planets_dict)
+
+user_os = {"William":"Windows", "Maria":"MacOS", "Laura":"Linux"}
+# eighth endpoint
+@app.route("/loops_and_conditionals/")
+def hello_world_loops_and_conditionals():
+    return render_template("loops_and_conditionals.html", user_os = user_os)

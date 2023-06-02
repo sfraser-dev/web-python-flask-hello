@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loops and conditionals</title>
+  <style>
+    .blue { color : blue}
+  </style>
+</head>
+
+<body>
+  <h1>Loops in Jinja2</h1>
+  <h2>For loop "&amp;" conditional statements</h2>
+
+  {% for user, os in user_os.items() %}
+    {% if os == "Windows" %}
+      <p class="blue">💻 {{ user }} is a {{ os }} user.</p>
+    {% else %}
+      <p>💻 {{ user }} is a {{ os }} user.</p>
+    {% endif %}
+  {% endfor %}
+
+  {% include "nav.html" %}
+</body>
+</html>
