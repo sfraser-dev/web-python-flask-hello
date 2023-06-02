@@ -29,7 +29,7 @@ be writing our code.
     # activate the virtual environment
     .\.venv\Scripts\activate
 
-(3) Install Flask
+(3) Install Flask (into the virtual environment)
     pip install Flask
 
 (4) Write Flask app in file app.py (default for Flask)
