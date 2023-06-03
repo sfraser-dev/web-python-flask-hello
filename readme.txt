@@ -1,3 +1,7 @@
+
+Simple html/css, python, flask and jinja2 examples run on local machine
+
+####################
 General Flask information:
 Micro framework, doesn't do much, allows us to receive user data and send
 data back as per user requests. Because it doesn't do that much for us, we
@@ -27,12 +31,14 @@ be writing our code.
     # create a virtual environment (intellisence can now work)
     pyenv exec python -m venv .venv (add .venv to gitignore)
     # activate the virtual environment
+
+(3) Activate pyenv
     .\.venv\Scripts\activate
 
-(3) Install Flask (into the virtual environment)
+(4) Install Flask (into the virtual environment)
     pip install Flask
 
-(4) Write Flask app in file app.py (default for Flask)
+(5) Write Flask app in file app.py (default for Flask)
 
     from flask import Flask
     app = Flask(__name__)
@@ -40,15 +46,23 @@ be writing our code.
     def hello_world():
         return "Hello, world!"
 
-(5) Set flask environment variables (powershell)
+(6) Set flask environment variables (powershell)
     # Tell Flask before we run it which python file contains the Flask app
     $env:FLASK_APP = "app.py"
     $env:FLASK_APP
     $env:FLASK_DEBUG = 1
     $env:FLASK_DEBUG
+Environment variables are deleted by setting them to null:
+$env:TEST_VAR = 1 (create and set to 1)
+$env:TEST_VAR = $null (delete)
 
-(6) Now we can run flask
+(7) Now we can run flask
     flask run
+
+(8) MongoDB / Cloud Atlas / pymongo
+    See Mongo Cloud Atlas notes below
+    VPN: need to add vpn address to Network Access in Cloud Atlas or
+    will get pymongo connection timeout errors
 
 ####################
 Content that is static doesn't have to be generated, modified or processed.
@@ -104,7 +118,7 @@ Teclado website 18k hits per month, most ever simultaneous POSTS is 5
 
 
 ####################
-MongoDB
+MongoDB Cloud Atlas
 MongoDB originally designed for large amounts of small pieces data
 **MongoDB Cloud Atlas (DB in the cloud, DBaaS, DB as a Service)
 **MongoDB Compass (local GUI for managing our DBs in the cloud)
@@ -128,3 +142,19 @@ of documents is "like" a SQL table
 pip freeze # see everything you've installed with pip
 mongodb+srv://mong-rabbit:<password>@jack-rabbit.u44ibnh.mongodb.net/
 Replace all of <password> with the password (remove < > too)
+
+"jack-rabbit" is a mongoDB atlas CLUSTER
+via USER "mong-rabbit" & passwd ****.
+An atlas cluster can be though of as a cloud server
+User "mong-rabbit" was created on the cloud atlas website,
+
+
+####################
+Portfolio
+Drum: Flexbox and media query added for responsiveness. Sass used.
+Dice: Storing results in local storage "database". Media query responsiveness. Sass used.
+Simon: Flexbox and media query for responsiveness (fixed inline-block blue line issue). Sass added. 
+
+####################
+Environment (in pyenv)
+pip install python-dotenv
