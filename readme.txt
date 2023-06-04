@@ -38,23 +38,34 @@ be writing our code.
 (4) Install Flask (into the virtual environment)
     pip install Flask
 
-(5) Write Flask app in file app.py (default for Flask)
+(5) Install dotenv for environment variable management 
+    pip install python-dotenv
+
+(6) Set flask environment variables (powershell)
+    # Tell Flask before we run it which python file contains the Flask app
+    $env:FLASK_APP="app.py"
+    $env:FLASK_APP
+    $env:FLASK_DEBUG=1
+    $env:FLASK_DEBUG
+
+    FLASK_RUN_HOST="127.0.0.1"
+    FLASK_RUN_HOST
+    FLASK_RUN_PORT=5500 # live server defaults to this
+    FLASK_RUN_PORT
+
+Environment variables are deleted by setting them to null:
+$env:TEST_VAR = 1 (create and set to 1)
+$env:TEST_VAR = $null (delete)
+
+(6) Write Flask app in file app.py (default for Flask)
 
     from flask import Flask
+    from dotenv import load_dotenv
+    load_dotenv()
     app = Flask(__name__)
     @app.route("/")
     def hello_world():
         return "Hello, world!"
-
-(6) Set flask environment variables (powershell)
-    # Tell Flask before we run it which python file contains the Flask app
-    $env:FLASK_APP = "app.py"
-    $env:FLASK_APP
-    $env:FLASK_DEBUG = 1
-    $env:FLASK_DEBUG
-Environment variables are deleted by setting them to null:
-$env:TEST_VAR = 1 (create and set to 1)
-$env:TEST_VAR = $null (delete)
 
 (7) Now we can run flask
     flask run
