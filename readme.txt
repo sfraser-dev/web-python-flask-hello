@@ -57,7 +57,7 @@ Environment variables are deleted by setting them to null:
 $env:TEST_VAR = 1 (create and set to 1)
 $env:TEST_VAR = $null (delete)
 
-(6) Write Flask app in file app.py (default for Flask)
+(7) Write Flask app in file app.py (default for Flask)
 
     from flask import Flask
     from dotenv import load_dotenv
@@ -67,13 +67,14 @@ $env:TEST_VAR = $null (delete)
     def hello_world():
         return "Hello, world!"
 
-(7) Now we can run flask
+(8) Now we can run flask
     flask run
 
-(8) MongoDB / Cloud Atlas / pymongo
-    See Mongo Cloud Atlas notes below
-    VPN: need to add vpn address to Network Access in Cloud Atlas or
-    will get pymongo connection timeout errors
+(9) MongoDB / Cloud Atlas / pymongo
+    pip install pymongo[srv] # in pyenv 3.9.0  
+    See Mongo Cloud Atlas setup notes below
+    VPN: need to add vpn address to Network Access in Cloud
+    Atlas or will get pymongo connection timeout errors
 
 ####################
 Content that is static doesn't have to be generated, modified or processed.
