@@ -162,11 +162,5 @@ User "mong-rabbit" was created on the cloud atlas website,
 
 
 ####################
-Portfolio
-Drum: Flexbox and media query added for responsiveness. Sass used.
-Dice: Storing results in local storage "database". Media query responsiveness. Sass used.
-Simon: Flexbox and media query for responsiveness (fixed inline-block blue line issue). Sass added. 
-
-####################
 Environment (in pyenv)
 pip install python-dotenv
