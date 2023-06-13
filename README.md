@@ -1,1 +1,1 @@
-Udemy Flask and Python bootcamp by Teclado.
+Udemy Flask and Python bootcamp.
