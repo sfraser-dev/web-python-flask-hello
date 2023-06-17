@@ -9,9 +9,9 @@ can write our applications in pure python, it doesn't tell us how we should
 be writing our code.
 
 # Installing flask on windows / powershell terminal (within vscode)
-(1) Install python 3
+(01) Install python 3
 
-(2) Create a virtual environment (pyenv) Pyenv for windows: https://github.com/pyenv-win/pyenv-win
+(02) Create a virtual environment (pyenv) Pyenv for windows: https://github.com/pyenv-win/pyenv-win
 
     # Powershell install:
     Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
@@ -32,16 +32,16 @@ be writing our code.
     pyenv exec python -m venv .venv (add .venv to gitignore)
     # activate the virtual environment
 
-(3) Activate pyenv
+(03) Activate pyenv
     .\.venv\Scripts\activate
 
-(4) Install Flask (into the virtual environment)
+(04) Install Flask (into the virtual environment)
     pip install Flask
 
-(5) Install dotenv for environment variable management 
+(05) Install dotenv for environment variable management 
     pip install python-dotenv
 
-(6) Set flask environment variables (powershell)
+(06) Set flask environment variables (powershell)
     # Tell Flask before we run it which python file contains the Flask app
     $env:FLASK_APP="app.py"
     $env:FLASK_APP
@@ -57,7 +57,7 @@ Environment variables are deleted by setting them to null:
 $env:TEST_VAR = 1 (create and set to 1)
 $env:TEST_VAR = $null (delete)
 
-(7) Write Flask app in file app.py (default for Flask)
+(07) Write Flask app in file app.py (default for Flask)
 
     from flask import Flask
     from dotenv import load_dotenv
@@ -67,14 +67,53 @@ $env:TEST_VAR = $null (delete)
     def hello_world():
         return "Hello, world!"
 
-(8) Now we can run flask
+(08) Now we can run flask
     flask run
 
-(9) MongoDB / Cloud Atlas / pymongo
+(09) MongoDB / Cloud Atlas / pymongo
     pip install pymongo[srv] # in pyenv 3.9.0  
     See Mongo Cloud Atlas setup notes below
+    My username is js77 for MongoDB Atlas
     VPN: need to add vpn address to Network Access in Cloud
     Atlas or will get pymongo connection timeout errors
+
+(10) Deploy to render.com
+    1. pip freeze (to see dependencies our app needs)
+    2. add all these to "requirements.txt" (copy / paste)
+       Can add only the following rather than everything from "pip freeze",
+       these'll install the dependencies shown in "pip freeze" too (but the
+       latest versions, not specific versions as in the "pip freeze" list)
+            Flask
+            pymongo[srv]
+            python-dotenv
+            gunicorn
+    3. also need to add gunicorn to "requirements.txt"
+    4. put code on Github, can be public or private repo, doesn't matter
+    5. Connect to Github account
+    6. open New -> Web Service on render.com
+    7. Choose Github code then deploy the webservice:
+        - Give web service a name
+        - Choose region closest to me
+        - Select the Github branch to use
+        - Root Directory: empty
+        - Runtime: Python 3
+        - Build command: pip install -r requirements.txt
+        - Start command: gunicorn "app:create_app()" ...(I was using "flask run" before)
+        - Select free webservices plan
+        - Advanced: Add environment variables
+            MONGODB_URI with username and passwd (what's in our local (gitignored) .env file)
+            PYTHON_VERSION 3.11.3 (latest version of python)
+        - MongoDB Atlas (js77) add Netwrok Access for render.com
+            Click Connect -> Outbound tab, copy the 3 URLs to the allow network access on MongoDB
+            Atlas, copy one at a time.
+            TEST PROJECT: allow access from everywhere on Atlas
+            TEST PROJECT: have the password for MongoDB in the code (app.py), not a .env URI
+                ("Preparing our app for deployment"), this means anyone can 
+        - Now click Create Web Service button at the bottom of the page and wait for it to live.
+
+
+    pip install -r requirements.txt (install the requirements,
+        run this when depolying our app on render.com)
 
 ####################
 Content that is static doesn't have to be generated, modified or processed.
@@ -107,6 +146,14 @@ Flask comes with the powerful Jinja2 template language.
 Flask and Jinja2 were written by the same person.
 
 ####################
+Jinja2
+Interpolate: "to insert between other elements or parts" 
+{{ }}   expressions, these will get reduced to a single value and
+        get interpolated into the template
+{% %}   statements, allow Jinja2 tp make decisions or do something
+        other than interpolating values (if, for)
+
+####################
 Final Forward Slashe in @app.route endpoints.
 Endpoint of: @app.route("/home/") is better to use than:
 @app.route("/home") because typing URL of
@@ -117,20 +164,12 @@ Endpoint of: @app.route("/home") would result in only
 https://www.example.com/home working with 
 https://www.example.com/home/ failing.
 
-####################
-Jinja2
-Interpolate: "to insert between other elements or parts" 
-{{ }}   expressions, these will get reduced to a single value and
-        get interpolated into the template
-{% %}   statements, allow Jinja2 tp make decisions or do something
-        other than interpolating values (if, for)
-
-####################
 Teclado website 18k hits per month, most ever simultaneous POSTS is 5
 
 
 ####################
 MongoDB Cloud Atlas
+My username is js77 for MongoDB Cloud Atlas
 MongoDB originally designed for large amounts of small pieces data
 **MongoDB Cloud Atlas (DB in the cloud, DBaaS, DB as a Service)
 **MongoDB Compass (local GUI for managing our DBs in the cloud)
@@ -156,9 +195,17 @@ mongodb+srv://mong-rabbit:<password>@jack-rabbit.u44ibnh.mongodb.net/
 Replace all of <password> with the password (remove < > too)
 
 "jack-rabbit" is a mongoDB atlas CLUSTER
-via USER "mong-rabbit" & passwd ****.
+via USER "mong-rabbit" & PASSWD ****.
 An atlas cluster can be though of as a cloud server
-User "mong-rabbit" was created on the cloud atlas website,
+User "mong-rabbit" was created on the cloud atlas website
+
+Atlas Website access for all to use my MongoDB cluster. 
+1. No IP restrictions
+2. Password for mong-rabbit user in the python code (can change later)
+To allow access from anywhere:
+All Clusters -> jack-rabbit -> Network access -> +Add IP Address -> Allow Access from Anywhere
+To Change password!
+All Clusters -> jack-rabbit -> Database access -> mong-rabbit (user)-> Edit
 
 
 ####################
