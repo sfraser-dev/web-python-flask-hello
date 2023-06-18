@@ -144,7 +144,7 @@ $env:TEST_VAR = $null (delete)
         - needs file "requirements.txt" (contains four lines:
                                             flask
                                             pymongo[srv]
-                                            python_dotenv
+                                            python-dotenv
                                             gunicorn
                                         )
         - needs file "runtime.txt" (contains only python version, ie: only contains line:   python-3.9.0   )
