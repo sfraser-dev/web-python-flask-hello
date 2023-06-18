@@ -47,6 +47,8 @@ be writing our code.
     $env:FLASK_APP
     $env:FLASK_DEBUG=1
     $env:FLASK_DEBUG
+        #$env:FLASK_ENV=development (using FLASK_DEBUG instead)
+        #$env:FLASK_ENV
 
     FLASK_RUN_HOST="127.0.0.1"
     FLASK_RUN_HOST
@@ -154,6 +156,10 @@ $env:TEST_VAR = $null (delete)
         - Heroku site: calls Web Services / servers "dynos"
         - Heroku site: Settings - Config Vars (environment variables, configure: MONGODB_URI)
         - Heroku site: Deploy tab - Manual deploy
+
+(11)    "black" and "flake8" he installed too (formatter and linter). 
+        The "jinja" extension performs language colorization for jinja
+        
 
 
 
