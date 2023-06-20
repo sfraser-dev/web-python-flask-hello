@@ -55,6 +55,10 @@ be writing our code.
     FLASK_RUN_PORT=5500 # live server defaults to this
     FLASK_RUN_PORT
 
+    Put secret info into .env (eg: MongoDB Atlas passwd). Don't put .env into git.
+    Put flask environment variables into .flaskenv. Do put .flaskenv into git.
+    load_dotenv loads info from both .env and .flaskenv when it is run.
+
 Environment variables are deleted by setting them to null:
 $env:TEST_VAR = 1 (create and set to 1)
 $env:TEST_VAR = $null (delete)
