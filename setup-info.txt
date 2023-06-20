@@ -13,13 +13,20 @@ be writing our code.
 
 (02) Create a virtual environment (pyenv) Pyenv for windows: https://github.com/pyenv-win/pyenv-win
 
-    # Powershell install:
+    # Powershell install pyenv:
     Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
     # restart Powershell
     pyenv --version
     
     # How to use pyenv (same commands apply to pyenv for windows)
     # https://blog.teclado.com/how-to-use-pyenv-manage-python-versions/
+
+    # Quickstart
+    PS:> echo "flask`npython-dotenv" > requirements.txt
+    pyenv exec python -m venv .venv 
+    .\.venv\Scripts\activate
+    pip install -r requirements.txt
+    flask run
     
     # Teclado microblog code uses python 3.9.0
     pyenv install --list
@@ -31,7 +38,8 @@ be writing our code.
     # create a virtual environment (intellisence can now work)
     pyenv exec python -m venv .venv 
     (add .venv to gitignore)
-    (if vscode asks to use the new environment, select yes)
+    (if vscode asks if you want to select the new environment for 
+    the workspace folder, select yes)
     # activate the virtual environment
 
 (03) Activate pyenv
@@ -101,18 +109,20 @@ $env:TEST_VAR = $null (delete)
     5. Connect to Github account
     6. open New -> Web Service on render.com
     7. Choose Github code then deploy the web service:
-        - Give web service a name
+        - Give web service a name, this will form the URL
         - Choose region closest to me
         - Select the Github branch to use
         - Root Directory: empty
         - Runtime: Python 3
         - Build command: pip install -r requirements.txt
-        - Start command: gunicorn "app:create_app()" ...(I was using "flask run" before)
+        - Start command: gunicorn "app:create_app()"
+            ...(I was using "flask run" before)
+        - Auto deploy on (500 build mins per month should be enough)
         - Select free webservices plan
         - Advanced: Add environment variables
             MONGODB_URI with username and passwd (what's in our local (gitignored) .env file)
             PYTHON_VERSION 3.11.3 (latest version of python)
-        - MongoDB Atlas (js77) add Netwrok Access for render.com
+        - On MongoDB Atlas (js77) add Netwrok Access for render.com
             Click Connect -> Outbound tab, copy the 3 URLs to the allow network access on MongoDB
             Atlas, copy one at a time.
             USABILITY: allow access from everywhere on Atlas (don't restrict IPs)
@@ -143,12 +153,20 @@ $env:TEST_VAR = $null (delete)
 
 
     8. Dashboard -> Settings -> Can rename Web Service or delete Web Service here.
+        Note that renaming the Web Service doesn't change the URL for the site,
+        only changes the name of the Web Service on render.com dashboard 
+
     9. Different PaaSes (Platforms as a Service):
-        Render: Spun-down on free plans, after 15 mins, goes to sleep. $19pcm for plan that doesn't spin down. Static site hosting
-        Heroku Basic plan, $7 pcm Basic Plan never sleep. "Trick" heroku by including one tiny dynamic page if want static site.
+        Render: Spun-down on free plans, after 15 mins, goes to sleep.
+        $19pcm for plan that doesn't spin down. Static site hosting
+        
+        Heroku Basic plan, $7 pcm Basic Plan never sleep.
+        "Trick" heroku by including one tiny dynamic page if want static site.
+        
         pythonanywhere, $5pcm for Hacker plan that never sleeps, 1 web app
         pythonanywhere, $12pcm for Web Dev plan that never sleeps, 2 web apps
-    10. Heroku Info:
+    
+    10. Heroku Info from teclado:
         - needs file "requirements.txt" (contains four lines:
                                             flask
                                             pymongo[srv]
