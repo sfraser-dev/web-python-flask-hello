@@ -151,6 +151,9 @@ $env:TEST_VAR = $null (delete)
                 
         - Now click Create Web Service button at the bottom of the page and wait for it to live.
 
+        - Need to add payment info / credit card FIRST AND THEN I can use the paid instance type options. These
+          paid instance types don't have spin down.
+
 
     8. Dashboard -> Settings -> Can rename Web Service or delete Web Service here.
         Note that renaming the Web Service doesn't change the URL for the site,
@@ -158,28 +161,39 @@ $env:TEST_VAR = $null (delete)
 
     9. Different PaaSes (Platforms as a Service):
         Render: Spun-down on free plans, after 15 mins, goes to sleep.
-        $19pcm for plan that doesn't spin down. Static site hosting
+        $7pcm for plan that doesn't spin down. Need to add credit card to site first to be able to select this
+        starter instance type plan. 
         
         Heroku Basic plan, $7 pcm Basic Plan never sleep.
         "Trick" heroku by including one tiny dynamic page if want static site.
-        
         pythonanywhere, $5pcm for Hacker plan that never sleeps, 1 web app
         pythonanywhere, $12pcm for Web Dev plan that never sleeps, 2 web apps
     
-    10. Heroku Info from teclado:
+    10. Render STATIC site hosting (easy to do):
+        Select New->Static site.
+        Name: sif-example
+        Branch: main
+        Root Directory: "leave blank"
+        Build Command: "leave blank"
+        Publish Directory: ./
+        Create Static Site->Click
+
+    11. Deploy to Heroku Info:
         - needs file "requirements.txt" (contains four lines:
                                             flask
                                             pymongo[srv]
                                             python-dotenv
                                             gunicorn
                                         )
-        - needs file "runtime.txt" (contains only python version, ie: only contains line:   python-3.9.0   )
-        - needs file "Procfile" (only contains line:   web: gunicorn "app:create_app()"   )
+        - needs file "runtime.txt", contains the python version, ie: single line of-> python-3.9.0 
+        - needs file "Procfile", with a single line of->  web: gunicorn "app:create_app()"   
         - Github used to get code, deployment method, can be public or private code, both fine with Heroku
         - Heroku site: Deploy tab and More-tab-ViewLogs the two most important tabs on the site
         - Heroku site: calls Web Services / servers "dynos"
         - Heroku site: Settings - Config Vars (environment variables, configure: MONGODB_URI)
         - Heroku site: Deploy tab - Manual deploy
+
+        - Adding a payment card will you to select the non-free (non-sleeping) dynos / web services.
 
 (11)    "black" and "flake8" he installed too (formatter and linter). 
         The "jinja" extension performs language colorization for jinja
