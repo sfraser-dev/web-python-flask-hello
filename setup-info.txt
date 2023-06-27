@@ -1,7 +1,3 @@
-
-Simple html/css, python, flask and jinja2 examples run on local machine
-
-####################
 General Flask information:
 Micro framework, doesn't do much, allows us to receive user data and send
 data back as per user requests. Because it doesn't do that much for us, we
@@ -108,7 +104,13 @@ $env:TEST_VAR = $null (delete)
     4. put code on Github, can be public or private repo, doesn't matter
     5. Connect to Github account
     6. open New -> Web Service on render.com
-    7. Choose Github code then deploy the web service:
+    7. Choose Github project then deploy the web service:
+        - (GitHub need to have given permission to "share all repos" or 
+          GitHub needs to have added the project to the "list of shared repos")
+        - Need to add PAYMENT info / credit card FIRST AND THEN I can select the paid instance
+          type options. These paid instance types ($7pcm Starter) don't get spun down. Note that
+          it is $7pcm for each flask app, need to pay for each flask app web service. Price is
+          in dollars so use internation credit card.
         - Give web service a name, this will form the URL
         - Choose region closest to me
         - Select the Github branch to use
@@ -117,8 +119,10 @@ $env:TEST_VAR = $null (delete)
         - Build command: pip install -r requirements.txt
         - Start command: gunicorn "app:create_app()"
             ...(I was using "flask run" before)
-        - Auto deploy on (500 build mins per month should be enough)
-        - Select free webservices plan
+        - Auto deploy "on" (500 build mins per month should be enough) or "off".
+        - Select FREE instance web service: will be FREE but will SPIN DOWN after 15 mins.
+          Select STARTER instance web service: will be $7pcm but will NOT spin down.
+          Will need to pay Starter $7pcm for every app that I don't want to spin down. 
         - Advanced: Add environment variables
             MONGODB_URI with username and passwd (what's in our local (gitignored) .env file)
             PYTHON_VERSION 3.11.3 (latest version of python)
@@ -151,9 +155,19 @@ $env:TEST_VAR = $null (delete)
                 
         - Now click Create Web Service button at the bottom of the page and wait for it to live.
 
-        - Need to add payment info / credit card FIRST AND THEN I can use the paid instance type options. These
-          paid instance types don't have spin down.
-
+        - NAMECHEAP: Use domain name registrar to register a custom domain to my flask app.
+          -- Give my app a "better" domain name (add custom domain) rather than the default domain name.
+          -- Render.com gives free web service instace type a domain name of: APPNAME.onrender.com.
+          -- Render.com also gives static sites the domain name: APPNAME.onrender.com.
+          -- Render.com gives starer ($7) instace type web services a domain name of: APPNAME-WXYZ.onrender.com
+             where WXYZ is a code. 
+          -- Recommended domain name registrars on Render.com are Cloudflare and Namecheap.
+          -- I used Namecheap to register a "better" domain name. 
+          -- Prices are quoted in £pounds but payment page switches to $dollars, so use international payment card
+             to pay (or paypal with linked international payment card).
+          -- https://render.com/docs/configure-namecheap-dns
+          -- After buying a domain name, it can take a few hours to a day for it to become active.
+             Namecheap will send you an email when it does become active.
 
     8. Dashboard -> Settings -> Can rename Web Service or delete Web Service here.
         Note that renaming the Web Service doesn't change the URL for the site,
@@ -170,6 +184,8 @@ $env:TEST_VAR = $null (delete)
         pythonanywhere, $12pcm for Web Dev plan that never sleeps, 2 web apps
     
     10. Render STATIC site hosting (easy to do):
+        (GitHub need to have given permission to "share all repos" or 
+        GitHub needs to have added the project to the "list of shared repos")
         Select New->Static site.
         Name: sif-example
         Branch: main
@@ -179,6 +195,13 @@ $env:TEST_VAR = $null (delete)
         Create Static Site->Click
 
     11. Deploy to Heroku Info:
+        - (GitHub need to have given permission to "share all repos" or 
+          GitHub needs to have added the project to the "list of shared repos")
+        - Adding a PAYMENT card FIRST will allow you to select the non-free (non-sleeping) 
+          dynos (web services) (Heroku has no free plan, $5pcm Eco plan will spin down after
+          30 mins. Need the $7pcm Basic plan to prevent spin down.
+          Note that it is $7pcm for each flask app, need to pay for each flask app web service.
+          Price is in dollars so use international credit card.
         - needs file "requirements.txt" (contains four lines:
                                             flask
                                             pymongo[srv]
@@ -188,12 +211,13 @@ $env:TEST_VAR = $null (delete)
         - needs file "runtime.txt", contains the python version, ie: single line of-> python-3.9.0 
         - needs file "Procfile", with a single line of->  web: gunicorn "app:create_app()"   
         - Github used to get code, deployment method, can be public or private code, both fine with Heroku
-        - Heroku site: Deploy tab and More-tab-ViewLogs the two most important tabs on the site
+        - Heroku site: Deploy tab and More->Tab->ViewLogs the two most important tabs on the site
         - Heroku site: calls Web Services / servers "dynos"
         - Heroku site: Settings - Config Vars (environment variables, configure: MONGODB_URI)
+          (Heroku uses a file to set the python version, so no need to set the PYTHON_VERSION variable)
         - Heroku site: Deploy tab - Manual deploy
-
-        - Adding a payment card will you to select the non-free (non-sleeping) dynos / web services.
+        - Use a domain name registrar for a better domain name: default generated is something like:
+          APPNAME-abcde12345-heroku.com
 
 (11)    "black" and "flake8" he installed too (formatter and linter). 
         The "jinja" extension performs language colorization for jinja
