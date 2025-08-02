@@ -6,6 +6,8 @@
   <title>For loop</title>
 </head>
 <body>
+  {% include "nav.html" %}
+
   <h1>For loop through list</h1>
   <ul>
     {% for i in planets_list %}
@@ -19,7 +21,5 @@
       <li>{{ value }}</li>
     {% endfor %}
   </ul>
-
-  {% include "nav.html" %}
 </body>
 </html>

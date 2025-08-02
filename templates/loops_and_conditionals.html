@@ -10,6 +10,8 @@
 </head>
 
 <body>
+  {% include "nav.html" %}
+
   <h1>Loops in Jinja2</h1>
   <h2>For loop "&amp;" conditional statements</h2>
 
@@ -20,7 +22,5 @@
       <p>💻 {{ user }} is a {{ os }} user.</p>
     {% endif %}
   {% endfor %}
-
-  {% include "nav.html" %}
 </body>
 </html>

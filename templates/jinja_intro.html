@@ -7,10 +7,10 @@
     <title>Jinja2</title>
 </head>
 <body>
+    {% include "nav.html" %}
+
     <h1>Hello {{ name }}</h1>
     <p>Introduction to the {{ template_name }} language.</p>
     <p>{{ template_name }} results in non-static content.</p>
-
-    {% include "nav.html" %}
 </body>
 </html>
