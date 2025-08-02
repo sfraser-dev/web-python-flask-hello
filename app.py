@@ -90,7 +90,27 @@ def create_app():
             )
 
         return render_template("form_input.html")
+    
+    # tenth endpoint, query parameters (different from parameterised path)
+    # key-value pairs that are part of the **url string**
+    # mnemonic: QP PP QPPP (query parameters and parameterised path)
+    # access via request.args
+    @app.route("/query_parameters_user/")
+    def query_parameters_user():
+        name = request.args.get("name", "Unknown")
+        age = request.args.get("age", "N/A")
+        city = request.args.get("city", "Nowhere")
 
+        return render_template("query_parameters_user.html", name=name, age=age, city=city)
+
+    # eleventh endpoint, parameterised path
+    # endpoint that is part of the **url path**
+    @app.route("/parameterised_path_hello/")
+    @app.route("/parameterised_path_hello/<name>")
+    def parameterised_path_hello(name="Unknown"):
+        return render_template("parameterised_path_hello.html", name=name)
+
+    
     return app
 
 if __name__ == "__main__":

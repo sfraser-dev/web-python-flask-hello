@@ -8,22 +8,32 @@
         {% include "nav.html" %}
 
         <h2>User Registration</h2>
+        <!-- No 'action' attribute in the form element means the form will submit to same url as served from -->
+        <!-- If wanting to be explicit: <form method="POST" action="/form_input/"> -->
+        <!-- Similar to the default 'method' attribute in the form being: method="GET" -->
+        <!-- Similar to the default verb for a Flask route being: methods=["GET"] -->
         <form method="POST">
+            <!-- post name = "name" -->
             <label>Name: <input type="text" name="name" /></label><br />
+            <!-- post name = "email" -->
             <label>Email: <input type="email" name="email" /></label><br />
+            <!-- post name = "password" -->
             <label>Password: <input type="password" name="password" /></label
             ><br />
+            <!-- post name = "gender" -->
             <label
                 >Gender: <input type="radio" name="gender" value="Male" /> Male
                 <input type="radio" name="gender" value="Female" />
                 Female </label
             ><br />
+            <!-- post name = "interests" -->
             <label>Interests:</label><br />
             <input type="checkbox" name="interests" value="Coding" />
             Coding<br />
             <input type="checkbox" name="interests" value="Music" /> Music<br />
             <input type="checkbox" name="interests" value="Sports" />
             Sports<br />
+            <!-- post name = "country" -->
             <label
                 >Country:
                 <select name="country">
@@ -32,6 +42,7 @@
                     <option value="IN">India</option>
                 </select> </label
             ><br />
+            <!-- send this form when clicked -->
             <button type="submit">Submit</button>
         </form>
     </body>
