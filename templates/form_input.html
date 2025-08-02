@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sample Form</title>
+    </head>
+    <body>
+        {% include "nav.html" %}
+
+        <h2>User Registration</h2>
+        <form method="POST">
+            <label>Name: <input type="text" name="name" /></label><br />
+            <label>Email: <input type="email" name="email" /></label><br />
+            <label>Password: <input type="password" name="password" /></label
+            ><br />
+            <label
+                >Gender: <input type="radio" name="gender" value="Male" /> Male
+                <input type="radio" name="gender" value="Female" />
+                Female </label
+            ><br />
+            <label>Interests:</label><br />
+            <input type="checkbox" name="interests" value="Coding" />
+            Coding<br />
+            <input type="checkbox" name="interests" value="Music" /> Music<br />
+            <input type="checkbox" name="interests" value="Sports" />
+            Sports<br />
+            <label
+                >Country:
+                <select name="country">
+                    <option value="UK">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="IN">India</option>
+                </select> </label
+            ><br />
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

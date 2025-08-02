@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # app factory pattern
 def create_app():
@@ -67,6 +67,29 @@ def create_app():
     def hello_world_loops_and_conditionals():
         user_os = {"William":"Windows", "Maria":"MacOS", "Laura":"Linux"}
         return render_template("loops_and_conditionals.html", user_os=user_os)
+
+    # ninth endpoint
+    @app.route("/form_input/", methods=["GET", "POST"])
+    def form_input():
+        if request.method == "POST":
+            name = request.form.get("name")
+            email = request.form.get("email")
+            password = request.form.get("password")
+            gender = request.form.get("gender")
+            interests = request.form.getlist("interests")
+            country = request.form.get("country")
+
+            return render_template(
+                "form_result.html",
+                name=name,
+                email=email,
+                password=password,
+                gender=gender,
+                interests=interests,
+                country=country,
+            )
+
+        return render_template("form_input.html")
 
     return app
 
